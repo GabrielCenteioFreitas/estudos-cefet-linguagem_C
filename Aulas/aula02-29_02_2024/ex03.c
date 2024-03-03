@@ -1,3 +1,7 @@
+// Autor: Gabriel Centeio Freitas
+// Data: 29/02/2024
+// Descrição: Programa que verifica se uma determinada data é válida.
+
 #include <stdio.h>
 
 int main() {

@@ -1,17 +1,21 @@
-#include <stdio.h> //não precisa de ';' em include
+// Autor: Gabriel Centeio Freitas
+// Data: 22/02/2024
+// Descrição: Programa que calcula as raízes de uma equação do segundo grau.
+
+#include <stdio.h>
 #include <math.h>
 
 int main() {
-    float a, b, c, delta, x1, x2, x; //declarando as variáveis
+    float a, b, c, delta, x1, x2, x;
 
     printf("Entre com os valores de a, b e c: ");
-    scanf("%f%f%f",&a,&b,&c); //lendo as variáveis
+    scanf("%f%f%f",&a,&b,&c);
 
-    delta = (b*b)-(4*a*c); //atribuindo valor à variável delta
+    delta = (b*b)-(4*a*c);
     if(delta > 0) {
         x1 = (-b+sqrt(delta)) / (2*a);
         x2 = (-b-sqrt(delta)) / (2*a);
-        printf("Raízes são: %.2f e %.2f",x1,x2); //".2" formata para 2 casas decimais
+        printf("Raízes são: %.2f e %.2f",x1,x2);
     }
     if(delta < 0) {
         printf("Não existe raiz real");
@@ -22,4 +26,4 @@ int main() {
     }
 
     return 0;
-} //não precisa de ';' em {}
+}

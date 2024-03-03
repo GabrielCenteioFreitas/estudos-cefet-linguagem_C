@@ -1,3 +1,7 @@
+// Autor: Gabriel Centeio Freitas
+// Data: 29/02/2024
+// Descrição: Programa que calcula salário líquido com base no salário inserido.
+
 #include <stdio.h>
 
 int main() {

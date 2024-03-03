@@ -1,3 +1,7 @@
+// Autor: Gabriel Centeio Freitas
+// Data: 29/02/2024
+// Descrição: Programa que calcula o número de deputados de determinado estado com base em sua população.
+
 #include <stdio.h>
 
 int main() {

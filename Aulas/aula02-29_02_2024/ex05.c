@@ -1,3 +1,7 @@
+// Autor: Gabriel Centeio Freitas
+// Data: 29/02/2024
+// Descrição: Programa que calcula a situação acadêmica de um aluno com base em suas notas.
+
 #include <stdio.h>
 
 int main() {
