@@ -5,6 +5,30 @@
 #include <stdio.h>
 
 int main() {
+    int lado1, lado2, lado3;
+    
+    printf("Digite o comprimento do primeiro lado: ");
+    scanf("%d", &lado1);
+    printf("Digite o comprimento do segundo lado: ");
+    scanf("%d", &lado2);
+    printf("Digite o comprimento do terceiro lado: ");
+    scanf("%d", &lado3);
+
+    if(lado1+lado2>lado3 && lado1+lado3>lado2 && lado2+lado3>lado1) {
+        printf("\nÉ possível formar um triângulo.\n");
+        if(lado1==lado2 && lado2==lado3){
+            printf("O triângulo é equilátero.");
+        }
+        else if (lado1!=lado2 && lado1!=lado3 && lado2!=lado3){
+            printf("O triângulo é escaleno.");
+        }
+        else {
+            printf("O triângulo é isósceles.");
+        }
+    }
+    else {
+        printf("\nNão é possível formar um triângulo com esses valores.");   
+    }
 
   return 0;
 }
