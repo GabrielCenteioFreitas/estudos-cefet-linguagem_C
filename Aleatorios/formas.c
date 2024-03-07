@@ -27,7 +27,7 @@ int main() {
 
         for (int i = 0; i < altura; i++) {
             for (int j = 0; j < largura; j++) {
-                printf("🟪");
+                printf("[]");
             }
             printf("\n");
         }
@@ -37,7 +37,7 @@ int main() {
         printf("Escolha a largura do losango(min: 3): ");
         scanf("%d", &largura);
         while(largura < 3 || largura%2 == 0){
-            printf("Escolha a largura do losango(min: 3): ");
+            printf("Escolha a largura do losango(min: 3; apenas ímpares): ");
             scanf("%d", &largura);
         }
 
