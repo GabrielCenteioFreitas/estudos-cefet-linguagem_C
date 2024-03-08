@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 int main() {
-    int dia, mes, ano, diasFevereiro;
+    int dia, mes, ano, diasDoMes;
 
     printf("Bem-vindo ao Verificador de Data!\nPor favor, insira a data no formato dia mês ano (exemplo: 25 02 2023): ");
     scanf("%d%d%d", &dia, &mes, &ano);
@@ -14,36 +14,28 @@ int main() {
     if(mes > 12 || mes < 1) {
         printf("O mês inserido está errado.");
     }
-    else if(mes == 2) {
-        if(ano%4 == 0 && (ano%100 != 0 || ano%400 == 0)) {
-            diasFevereiro = 29;
+    else {
+        if (mes == 2) {
+          if(ano%4 == 0 && (ano%100 != 0 || ano%400 == 0)) {
+              diasDoMes = 29;
+          }
+          else {
+              diasDoMes = 28;
+          }
+        }
+        else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+            diasDoMes = 30;
         }
         else {
-            diasFevereiro = 28;
-        }
-      
-        if(dia >= 1 && dia <= diasFevereiro){
-            printf("Data válida!");
-        }
-        else {
-            printf("O dia está errado.");
+            diasDoMes = 31;
         }
     }
-    else if(mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
-        if(dia >= 1 && dia <= 31){
-            printf("Data válida!");
-        }
-        else {
-            printf("O dia está errado.");
-        }
+
+    if (dia >= 1 && dia <= diasDoMes) {
+        printf("Data válida!");      
     }
     else {
-        if(dia >= 1 && dia <= 30){
-            printf("Data válida!");
-        }
-        else {
-            printf("O dia está errado.");
-        }
+        printf("O dia está errado.");
     }
 
     return 0;

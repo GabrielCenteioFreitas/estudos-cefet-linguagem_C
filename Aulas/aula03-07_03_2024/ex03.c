@@ -6,7 +6,7 @@
 
 int main() {
     int lado1, lado2, lado3;
-    
+
     printf("Digite o comprimento do primeiro lado: ");
     scanf("%d", &lado1);
     printf("Digite o comprimento do segundo lado: ");
@@ -17,13 +17,13 @@ int main() {
     if(lado1+lado2>lado3 && lado1+lado3>lado2 && lado2+lado3>lado1) {
         printf("\nÉ possível formar um triângulo.\n");
         if(lado1==lado2 && lado2==lado3){
-            printf("O triângulo é equilátero.");
+            printf("O triângulo é equilátero.\n");
         }
         else if (lado1!=lado2 && lado1!=lado3 && lado2!=lado3){
-            printf("O triângulo é escaleno.");
+            printf("O triângulo é escaleno.\n");
         }
         else {
-            printf("O triângulo é isósceles.");
+            printf("O triângulo é isósceles.\n");
         }
     }
     else {

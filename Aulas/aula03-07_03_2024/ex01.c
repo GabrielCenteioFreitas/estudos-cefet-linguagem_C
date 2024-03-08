@@ -4,10 +4,8 @@
 
 #include <stdio.h>
 
-int main() {
-    float bruto, irpf;
-    printf("Digite o seu salário: ");
-    scanf("%f", &bruto);
+float IRPF(float bruto) {
+    float irpf = 0;
     if(bruto > 4664.68){
         irpf = (bruto*0.275)-869.36;
     }
@@ -20,10 +18,18 @@ int main() {
     else if(bruto >= 1903.99) {
         irpf = (bruto*0.075)-142.80;
     }
-    else {
-        irpf = 0;
-    }
+    return irpf;
+}
+
+int main() {
+    float bruto, irpf;
+
+    printf("Digite o seu salário: ");
+    scanf("%f", &bruto);
+    irpf = IRPF(bruto);
+
     printf("IRPF: R$ %.2f\n", irpf);
-    printf("Salário líquido: R$ %.2f", bruto-irpf);
+    printf("Salário líquido: R$ %.2f\n", bruto-irpf);
+
     return 0;
 }
