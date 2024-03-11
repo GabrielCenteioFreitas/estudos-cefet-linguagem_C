@@ -1,8 +1,9 @@
 #include <stdio.h>
 
 int main() {
-    printf("[1] Retângulo\n[2] Losango\nEscolha uma forma: ");
     int num;
+
+    printf("[1] Retaângulo\n[2] Losango\nEscolha uma forma: ");
     scanf("%d", &num);
 
     while(num != 1 && num != 2){
