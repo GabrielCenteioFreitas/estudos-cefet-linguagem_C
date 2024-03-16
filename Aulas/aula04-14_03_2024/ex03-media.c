@@ -10,13 +10,13 @@ int main(void) {
 
   printf("Digite a quantidade de números que você deseja calcular a média: ");
   scanf("%d", &qntd);
+  if (qntd<=0) {
+    printf("O número deve ser positivo.");
+    return 0;
+  }
   for(int i=0; i<qntd;i++) {
     printf("Digite o %d° número: ",i+1);
     scanf("%d", &num);
-    while (num<=0) {
-      printf("Digite o %d° número: ",i+1);
-      scanf("%d", &num);      
-    }
     soma+=num;
   }
 

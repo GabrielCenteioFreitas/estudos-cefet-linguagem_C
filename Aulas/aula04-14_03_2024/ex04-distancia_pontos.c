@@ -6,9 +6,7 @@
 #include <math.h>
 
 float calcularDistancia(float x1, float y1, float x2, float y2) {
-    float distancia = sqrt(pow(x2-x1,2)+pow(y2-y1,2));
-
-    return distancia;
+    return sqrt(pow(x2-x1,2)+pow(y2-y1,2));
 }
 
 int main(void) {
@@ -19,7 +17,7 @@ int main(void) {
   scanf("%d", &qntd);
 
   for (int i=0;i<qntd;i++) {
-   printf("Insira as coordenadas(X1 Y1 X2 Y2): ");
+   printf("\nInsira as coordenadas(X1 Y1 X2 Y2): ");
    scanf("%f%f%f%f", &x1, &y1, &x2, &y2);
    printf("Distância: %.2f\n", calcularDistancia(x1,y1,x2,y2));
   }

@@ -4,14 +4,14 @@
 
 #include <stdio.h>
 
-// Se forem inseridas duas matrículas iguais, o programa considerará o maior salário
+// Se forem inseridas matrículas iguais o programa considerará o maior salário
 int verificarMatricula(int matricula, int *matriculas, int qntd_func) {
   for (int i = 0; i < qntd_func; i++) {
     if (matricula == matriculas[i]) {
       return 1;
     }
   }
-  
+
   return 0;
 }
 
@@ -33,7 +33,7 @@ int calculaMaiorSalario(int qntd_func, int *matriculas) {
     else if (salario == maior_salario && verificarMatricula(matricula, matriculas, qntd_func)==0) {
       qntd_maior_salario++;
     }
-    
+
     matriculas[i] = matricula;
   }
 
@@ -47,7 +47,7 @@ int calculaMaiorSalario(int qntd_func, int *matriculas) {
   return 0;
 }
 
-int main(void) {
+int main() {
   int qntd_func;
 
   printf("Insira a quantidade de funcionários na empresa: ");
