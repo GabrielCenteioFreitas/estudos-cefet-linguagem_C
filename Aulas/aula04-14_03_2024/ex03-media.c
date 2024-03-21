@@ -5,8 +5,8 @@
 #include <stdio.h>
 
 int main(void) {
-  int qntd, num, soma=0;
-  float media;
+  int qntd;
+  float num, soma=0, media;
 
   printf("Digite a quantidade de números que você deseja calcular a média: ");
   scanf("%d", &qntd);
@@ -16,11 +16,11 @@ int main(void) {
   }
   for(int i=0; i<qntd;i++) {
     printf("Digite o %d° número: ",i+1);
-    scanf("%d", &num);
+    scanf("%f", &num);
     soma+=num;
   }
 
-  media = (float)soma/qntd;
+  media = soma/qntd;
   printf("A média dos %d números é %.2f", qntd, media);
   
   return 0;
