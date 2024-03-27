@@ -3,6 +3,7 @@
 // Descrição: Programa que recebe os salários dos funcionários de uma empresa e exibe o maior, junto da quantidade de funcionários que recebem esse valor
 
 #include <stdio.h>
+#include <float.h>
 
 // Se forem inseridas matrículas iguais o programa considerará o maior salário
 int verificarMatricula(int matricula, int *matriculas, int qntd_func) {
@@ -17,7 +18,7 @@ int verificarMatricula(int matricula, int *matriculas, int qntd_func) {
 
 int calculaMaiorSalario(int qntd_func, int *matriculas) {
   int qntd_maior_salario, matricula;
-  float salario, maior_salario = 0;
+  float salario, maior_salario = -FLT_MAX;
 
   for (int i=0;i<qntd_func;i++) {
     printf("\nInsira a matrícula do funcionário: ");
