@@ -47,20 +47,11 @@ int main() {
     scanf("%d", &data);
 
     if (data != -1) {
-      if (validaData(data)) {
-        if ((data/10000)%100 < 10) {
-          printf("Data válida: %d/0%d/%d\n\n", data/1000000, (data/10000)%100, data%10000);
+        if (validaData(data)) {
+            printf("Data válida: %02d/%02d/%04d\n\n", data/1000000, (data/10000)%100, data%10000);
         } else {
-          printf("Data válida: %d/%d/%d\n\n", data/1000000, (data/10000)%100, data%10000);
+            printf("Data inválida: %02d/%02d/%04d\n\n", data/1000000, (data/10000)%100, data% 10000);
         }
-      }
-      else {
-        if ((data/10000)%100 < 10) {
-          printf("Data inválida: %d/0%d/%d\n\n", data/1000000, (data/10000)%100, data%10000);
-        } else {
-          printf("Data inválida: %d/%d/%d\n\n", data/1000000, (data/10000)%100, data%10000);
-        }
-      }
     }
   } while (data != -1);
   
