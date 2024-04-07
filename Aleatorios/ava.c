@@ -16,7 +16,7 @@ int exibirMenu() {
   printf("[1] Questão 1\n    - Gabarito não confirmado, mas encontrado igual por 3 pessoas\n\n");
   printf("[2] Questão 2\n    - Gabarito não confirmado, mas encontrado igual por 2 pessoas\n\n");
   printf("[3] Questão 3\n    - Gabarito da letra A não confirmado\n    - Gabarito da letra B confirmado\n\n");
-  // printf("[4] Questão 4\n\n");
+  printf("[4] Questão 4\n    - Gabarito não confirmado\n\n");
   printf("[5] Questão 5\n    - Gabarito confirmado\n\n");
   printf("[6] Questão 6\n    - Gabarito não confirmado\n    - Vc precisa ter resolvido o sistema antes para a letra A\n\n");
   printf("\nQual questão deseja resolver? ");
@@ -211,6 +211,29 @@ void resolverQuestao3() {
   sair();
 }
 
+void resolverQuestao4() {
+  float pontoA[4] = {}, pontoB[4] = {},
+        normaB, normaA, X, Y, a;
+
+  system(CLEAR);
+  exibirAviso();
+  printf("UM FATOR CRUCIAL:\nNa questão, o valor de X de A deve ser 1 e o Y -1\nNa questão, o valor de X de B deve ser -1 e o Y 3\nCaso isso não seja verdade, a resposta exibida aqui estará incorreta\n\n");
+  printf("Coordenadas do Ponto A: ");
+  scanf("%f %f %f %f", &pontoA[0], &pontoA[1], &pontoA[2], &pontoA[3]);
+  printf("Coordenadas do Ponto B: ");
+  scanf("%f %f %f %f", &pontoB[0], &pontoB[1], &pontoB[2], &pontoB[3]);
+
+  normaA = calcularNorma(pontoA, 4);
+  normaB = calcularNorma(pontoB, 4);
+  X = (normaB-normaA)/(normaB+normaA);
+  Y = ((3*normaA)-normaB)/(normaB+normaA);
+  a = ((X+Y)/2)+X;
+
+  printf("\n\nA resposta é: %.3f", a);
+
+  sair();
+}
+
 void resolverQuestao5() {
   float pontoA[4] = {}, pontoB[4] = {}, pontoP[4] = {},
         pontoAB[4] = {}, pontoAP[4] = {}, pontoAQ[4] = {},
@@ -285,6 +308,9 @@ int main() {
         break;
       case 3:
         resolverQuestao3();
+        break;
+      case 4:
+        resolverQuestao4();
         break;
       case 5:
         resolverQuestao5();
