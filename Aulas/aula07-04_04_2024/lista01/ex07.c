@@ -1,15 +1,16 @@
 #include <stdio.h>
 
 void calcularQntdCelulas(int valor) {
-  int qntdCedulas100 = valor/100;
-  int qntdCedulas50 = (valor%100)/50;
-  int qntdCedulas20 = (valor%100%50)/20;
-  int qntdCedulas10 = (valor%100%50%20)/10;
-  int qntdCedulas5 = (valor%100%50%20%10)/5;
-  int qntdCedulas2 = (valor%100%50%20%10%5)/2;
-  int qntdCedulas1 = valor%2;
+  int qntdCedulas100 = valor/100,
+      qntdCedulas50 = (valor%100)/50,
+      qntdCedulas20 = (valor%100%50)/20,
+      qntdCedulas10 = (valor%100%50%20)/10,
+      qntdCedulas5 = (valor%100%50%20%10)/5,
+      qntdCedulas2 = (valor%100%50%20%10%5)/2,
+      qntdCedulas1 = valor%2,
+      qntdCedulasTotal = qntdCedulas100+qntdCedulas50+qntdCedulas20+qntdCedulas10+qntdCedulas5+qntdCedulas2+qntdCedulas1;
 
-  printf("\nA quantidade de cédulas é:\n");
+  printf("\nSerão necessárias %d cédulas:\n", qntdCedulasTotal);
   if(qntdCedulas100 != 0) {
     printf("%d nota(s) de R$100.00\n", qntdCedulas100);
   }
