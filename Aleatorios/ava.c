@@ -123,6 +123,12 @@ float calcularDistancia(float N[], float ponto[], int tamanho) {
   return distancia;
 }
 
+float converterRadParaGraus(float rad) {
+  float graus;
+  graus = rad * (180/3.14159);
+  return graus;
+}
+
 void resolverQuestao1() {
   float n;
   
@@ -264,7 +270,9 @@ void resolverQuestao5() {
 
 void resolverQuestao6() {
   float vetorV[3] = {}, vetorK[3] = {},
-        vetorPlano1[3] = {}, vetorPlano2[3] = {}, dPlano1, dPlano2;
+        vetorPlano1[3] = {}, vetorPlano2[3] = {}, dPlano1, dPlano2,
+        anguloRetasEmRad, anguloRetasEmGraus,
+        anguloPlanosEmRad, anguloPlanosEmGraus;
 
   system(CLEAR);
   exibirAviso();
@@ -274,10 +282,13 @@ void resolverQuestao6() {
   printf("Insira as coordenadas do vetor K: ");
   scanf("%f %f %f", &vetorK[0], &vetorK[1], &vetorK[2]);
 
-  printf("\nA resposta da letra A é: %.2f\n\n\n", acosf(
-    calcularProdutoInterno(vetorV, vetorK, 3) /
-    (calcularNorma(vetorV, 3)*calcularNorma(vetorK, 3))
-  ));
+  anguloRetasEmRad = acosf(
+      calcularProdutoInterno(vetorV, vetorK, 3) /
+      (calcularNorma(vetorV, 3)*calcularNorma(vetorK, 3))
+  );
+  anguloRetasEmGraus = converterRadParaGraus(anguloRetasEmRad);
+
+  printf("\nA resposta da letra A é: %.2f°\n\n\n", anguloRetasEmGraus);
   
   printf("Agora vamos para a letra B\nNa questão temos:\nS: { A.x + B.y + C.z = D\n   { E.x + F.y + G.z = H\n\n");
   printf("Insira os valores de A B C D: ");
@@ -285,10 +296,13 @@ void resolverQuestao6() {
   printf("Insira os valores de E F G H: ");
   scanf("%f %f %f %f", &vetorPlano2[0], &vetorPlano2[1], &vetorPlano2[2], &dPlano2);
 
-  printf("\nA resposta da letra B é: %.2f\n", acosf(
-    calcularProdutoInterno(vetorPlano1, vetorPlano2, 3) /
-    (calcularNorma(vetorPlano1, 3)*calcularNorma(vetorPlano2, 3))
-  ));
+  anguloPlanosEmRad = acosf(
+      calcularProdutoInterno(vetorPlano1, vetorPlano2, 3) /
+      (calcularNorma(vetorPlano1, 3)*calcularNorma(vetorPlano2, 3))
+  );
+  anguloPlanosEmGraus = converterRadParaGraus(anguloPlanosEmRad);
+  
+  printf("\nA resposta da letra B é: %.2f°\n", anguloPlanosEmGraus);
 
   sair();
 }
