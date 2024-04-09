@@ -16,9 +16,9 @@ int exibirMenu() {
   printf("[1] Questão 1\n    - Gabarito não confirmado, mas encontrado igual por 3 pessoas\n\n");
   printf("[2] Questão 2\n    - Gabarito não confirmado, mas encontrado igual por 2 pessoas\n\n");
   printf("[3] Questão 3\n    - Gabarito da letra A não confirmado\n    - Gabarito da letra B confirmado\n\n");
-  printf("[4] Questão 4\n    - Gabarito não confirmado\n\n");
+  printf("[4] Questão 4\n    - Gabarito confirmado\n\n");
   printf("[5] Questão 5\n    - Gabarito confirmado\n\n");
-  printf("[6] Questão 6\n    - Gabarito não confirmado\n    - Vc precisa ter resolvido o sistema antes para a letra A\n\n");
+  printf("[6] Questão 6\n    - Gabarito das letras A e B confirmado\n    - Vc precisa ter resolvido o sistema antes para a letra A\n\n");
   printf("\nQual questão deseja resolver? ");
   scanf("%d", &escolha);
 
