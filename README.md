@@ -8,7 +8,7 @@
   
   <p>Pasta contendo projetos pessoais e trabalhos desenvolvidos durante as aulas da faculdade, todos em linguagem C.</p>
 
-  [Execute-os clicando aqui](https://replit.com/@gabrielcenteiof)
+  [Execute-os por aqui](https://replit.com/@gabrielcenteiof)
 </div>
 
 
