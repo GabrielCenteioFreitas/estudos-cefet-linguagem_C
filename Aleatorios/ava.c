@@ -95,6 +95,12 @@ void calcularAB(float coordsA[], float coordsB[], float coordsAB[] , int tamanho
   }
 }
 
+void calcularAmaisB(float coordsA[], float coordsB[], float coordsAmaisB[], int tamanho) {
+  for (int i = 0; i < tamanho; i++) {
+      coordsAmaisB[i] = coordsA[i] + coordsB[i];
+  }
+}
+
 void calcularProjecao(float coordsU[], float coordsV[], float projecao[], int tamanho) {
   float produto_intero_UV = calcularProdutoInterno(coordsU, coordsV, tamanho),
         produto_intero_UU = calcularProdutoInterno(coordsU, coordsU, tamanho),
@@ -156,12 +162,8 @@ void resolverQuestao2() {
   printf("Coordenadas do Ponto C: ");
   scanf("%f %f %f", &pontoC[0], &pontoC[1], &pontoC[2]);
 
-  pontoAlinha[0] = pontoA[0] + pontoB[0];
-  pontoAlinha[1] = pontoA[1] + pontoB[1];
-  pontoAlinha[2] = pontoA[2] + pontoB[2];
-  pontoBlinha[0] = pontoB[0] + pontoC[0];
-  pontoBlinha[1] = pontoB[1] + pontoC[1];
-  pontoBlinha[2] = pontoB[2] + pontoC[2];
+  calcularAmaisB(pontoA, pontoB, pontoAlinha, 3);
+  calcularAmaisB(pontoB, pontoC, pontoBlinha, 3);
 
   calcularProdutoVetorial(pontoAlinha, pontoBlinha, produto_vetorial);
 
@@ -188,17 +190,9 @@ void resolverQuestao3() {
   printf("Coordenadas do Ponto C: ");
   scanf("%f %f %f", &pontoC[0], &pontoC[1], &pontoC[2]);
 
-  pontoAlinha[0] = pontoA[0] + pontoB[0];
-  pontoAlinha[1] = pontoA[1] + pontoB[1];
-  pontoAlinha[2] = pontoA[2] + pontoB[2];
-  
-  pontoBlinha[0] = pontoB[0] + pontoC[0];
-  pontoBlinha[1] = pontoB[1] + pontoC[1];
-  pontoBlinha[2] = pontoB[2] + pontoC[2];
-  
-  pontoClinha[0] = pontoA[0] + pontoC[0];
-  pontoClinha[1] = pontoA[1] + pontoC[1];
-  pontoClinha[2] = pontoA[2] + pontoC[2];
+  calcularAmaisB(pontoA, pontoB, pontoAlinha, 3);
+  calcularAmaisB(pontoB, pontoC, pontoBlinha, 3);
+  calcularAmaisB(pontoA, pontoC, pontoClinha, 3);
 
   calcularProdutoVetorial(pontoAlinha, pontoBlinha, pontoN);
 
