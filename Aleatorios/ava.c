@@ -13,12 +13,12 @@ int exibirMenu() {
   int escolha;
 
   system(CLEAR);
-  printf("[1] Questão 1\n    - Gabarito não confirmado, mas encontrado igual por 3 pessoas\n\n");
-  printf("[2] Questão 2\n    - Gabarito não confirmado, mas encontrado igual por 2 pessoas\n\n");
-  printf("[3] Questão 3\n    - Gabarito da letra A não confirmado\n    - Gabarito da letra B confirmado\n\n");
-  printf("[4] Questão 4\n    - Gabarito confirmado\n\n");
-  printf("[5] Questão 5\n    - Gabarito confirmado\n\n");
-  printf("[6] Questão 6\n    - Gabarito confirmado\n\n");
+  printf("[1] Questão 1\n");
+  printf("[2] Questão 2\n");
+  printf("[3] Questão 3\n");
+  printf("[4] Questão 4\n");
+  printf("[5] Questão 5\n");
+  printf("[6] Questão 6\n");
   printf("\nQual questão deseja resolver? ");
   scanf("%d", &escolha);
 
@@ -206,6 +206,9 @@ void resolverQuestao3() {
   printf("\n\nA resposta da letra A é: %.2f", distancia);
   
   volume = calcularProdutoMisto(pontoA, pontoB, pontoC);
+  if (volume < 0) {
+    volume *= -1;
+  }
   printf("\n\nA resposta da letra B é: %.2f", volume);
 
   sair();
@@ -257,7 +260,8 @@ void resolverQuestao5() {
     pontoQ[i] = pontoAQ[i]+pontoA[i];
   }
 
-  printf("\n\nA resposta é:\nQ(%.3f, %.3f, %.3f, %.3f)", pontoQ[0], pontoQ[1], pontoQ[2], pontoQ[3]);
+  printf("\n\nA resposta é:\nQ(%f, %f, %f, %f)", pontoQ[0], pontoQ[1], pontoQ[2], pontoQ[3]);
+  printf("\n\nPara dízimas periódicas, insira 13 casas decimais na resposta, aproximando apenas a última\n(ex: 1.06667 deve virar 1.0666666666667)\nPara números que não possuem dízima periódica, insira apenas as casas decimais até os zeros\n(ex: 1.20000 deve virar 1.2)");
 
   sair();
 }
