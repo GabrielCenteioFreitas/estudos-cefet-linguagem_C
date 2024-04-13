@@ -18,7 +18,7 @@ int exibirMenu() {
   printf("[3] Questão 3\n    - Gabarito da letra A não confirmado\n    - Gabarito da letra B confirmado\n\n");
   printf("[4] Questão 4\n    - Gabarito confirmado\n\n");
   printf("[5] Questão 5\n    - Gabarito confirmado\n\n");
-  printf("[6] Questão 6\n    - Gabarito das letras A e B confirmado\n    - Vc precisa ter resolvido o sistema antes para a letra A\n\n");
+  printf("[6] Questão 6\n    - Gabarito confirmado\n\n");
   printf("\nQual questão deseja resolver? ");
   scanf("%d", &escolha);
 
@@ -263,40 +263,46 @@ void resolverQuestao5() {
 }
 
 void resolverQuestao6() {
-  float vetorV[3] = {}, vetorK[3] = {},
-        vetorPlano1[3] = {}, vetorPlano2[3] = {}, dPlano1, dPlano2,
+  float vetorV[3] = {}, vetorK[3] = {0, 0, 1},
+        coeficientesEq1[3] = {}, coeficientesEq2[3] = {},
         anguloRetasEmRad, anguloRetasEmGraus,
-        anguloPlanosEmRad, anguloPlanosEmGraus;
+        anguloPlanosEmRad, anguloPlanosEmGraus,
+        razaoX, x, y;
 
   system(CLEAR);
   exibirAviso();
-  printf("Para a resolução da letra A, é preciso que você já tenho resolvido o sistema e encontrado o vetor diretor da reta\n");
-  printf("Insira as coordenadas do vetor diretor: ");
-  scanf("%f %f %f", &vetorV[0], &vetorV[1], &vetorV[2]);
-  printf("Insira as coordenadas do vetor K: ");
-  scanf("%f %f %f", &vetorK[0], &vetorK[1], &vetorK[2]);
+  
+  printf("Insira os coeficientes de X Y Z:\n\n");
+  printf("Na primeira equação: ");
+  scanf("%f %f %f", &coeficientesEq1[0], &coeficientesEq1[1], &coeficientesEq1[2]);
+  printf("Na segunda equação: ");
+  scanf("%f %f %f", &coeficientesEq2[0], &coeficientesEq2[1], &coeficientesEq2[2]);
 
+  // Calculando Letra B
+  anguloPlanosEmRad = acosf(
+      calcularProdutoInterno(coeficientesEq1, coeficientesEq2, 3) /
+      (calcularNorma(coeficientesEq1, 3)*calcularNorma(coeficientesEq2, 3))
+  );
+  anguloPlanosEmGraus = converterRadParaGraus(anguloPlanosEmRad);
+  
+  // Calculando Letra A
+  razaoX = coeficientesEq2[0]/coeficientesEq1[0];
+  y = -((coeficientesEq1[2]*razaoX)-coeficientesEq2[2]) / ((coeficientesEq1[1]*razaoX)-coeficientesEq2[1]);
+  x = (-(coeficientesEq1[1]*y)-(coeficientesEq1[2])) / coeficientesEq1[0];
+
+  vetorV[0] = x;
+  vetorV[1] = y;
+  vetorV[2] = 1;
+  
   anguloRetasEmRad = acosf(
       calcularProdutoInterno(vetorV, vetorK, 3) /
       (calcularNorma(vetorV, 3)*calcularNorma(vetorK, 3))
   );
   anguloRetasEmGraus = converterRadParaGraus(anguloRetasEmRad);
 
-  printf("\nA resposta da letra A é: %.2f°\n\n\n", anguloRetasEmGraus);
-  
-  printf("Agora vamos para a letra B\nNa questão temos:\nS: { A.x + B.y + C.z = D\n   { E.x + F.y + G.z = H\n\n");
-  printf("Insira os valores de A B C D: ");
-  scanf("%f %f %f %f", &vetorPlano1[0], &vetorPlano1[1], &vetorPlano1[2], &dPlano1);
-  printf("Insira os valores de E F G H: ");
-  scanf("%f %f %f %f", &vetorPlano2[0], &vetorPlano2[1], &vetorPlano2[2], &dPlano2);
-
-  anguloPlanosEmRad = acosf(
-      calcularProdutoInterno(vetorPlano1, vetorPlano2, 3) /
-      (calcularNorma(vetorPlano1, 3)*calcularNorma(vetorPlano2, 3))
-  );
-  anguloPlanosEmGraus = converterRadParaGraus(anguloPlanosEmRad);
-  
-  printf("\nA resposta da letra B é: %.2f°\n", anguloPlanosEmGraus);
+  // Printando respostas
+  printf("\n\nA resposta da letra A é: %.2f°\n", anguloRetasEmGraus);
+  printf("A resposta da letra B é: %.2f°", anguloPlanosEmGraus);
 
   sair();
 }
