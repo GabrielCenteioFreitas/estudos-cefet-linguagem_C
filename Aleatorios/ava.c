@@ -19,7 +19,7 @@ int exibirMenu() {
   printf("[4] Questão 4\n");
   printf("[5] Questão 5\n");
   printf("[6] Questão 6\n");
-  printf("\nQual questão deseja resolver? ");
+  printf("\n( Utilize esse programa para verificar suas respostas )\n\nQual questão deseja resolver? ");
   scanf("%d", &escolha);
 
   return escolha;
@@ -109,7 +109,7 @@ void calcularProjecao(float coordsU[], float coordsV[], float projecao[], int ta
   calcularProdutoPorUmEscalar(escalar, coordsU, projecao, tamanho);
 }
 
-float calcularDistancia(float N[], float ponto[], int tamanho) {
+float calcularDistanciaPontoAlgo(float N[], float ponto[], int tamanho) {
   float distancia, numerador = 0, denominador = 0;
   
   for (int i = 0; i < tamanho; i++) {
@@ -129,10 +129,17 @@ float calcularDistancia(float N[], float ponto[], int tamanho) {
   return distancia;
 }
 
+float calcularDistanciaEntrePontos(float P1[], float P2[], int tamanho) {
+  float distancia, coordsDistanciaP1P2[tamanho];
+
+  calcularAB(P1, P2, coordsDistanciaP1P2, 3);
+  distancia = calcularNorma(coordsDistanciaP1P2, tamanho);
+
+  return distancia;
+}
+
 float converterRadParaGraus(float rad) {
-  float graus;
-  graus = rad * (180/3.14159);
-  return graus;
+  return rad * (180/3.14159);
 }
 
 void resolverQuestao1() {
@@ -201,7 +208,7 @@ void resolverQuestao3() {
   pontoNcomD[2] = pontoN[2];
   pontoNcomD[3] = pontoN[0]*pontoAlinha[0] + pontoN[1]*pontoAlinha[1] + pontoN[2]*pontoAlinha[2];
 
-  distancia = calcularDistancia(pontoNcomD, pontoClinha, 4);
+  distancia = calcularDistanciaPontoAlgo(pontoNcomD, pontoClinha, 4);
   
   printf("\n\nA resposta da letra A é: %.2f", distancia);
   
@@ -220,11 +227,16 @@ void resolverQuestao4() {
 
   system(CLEAR);
   exibirAviso();
-  printf("UM FATOR CRUCIAL:\nNa questão, o valor de X de A deve ser 1 e o Y -1\nNa questão, o valor de X de B deve ser -1 e o Y 3\nCaso isso não seja verdade, a resposta exibida aqui estará incorreta\n\n");
   printf("Coordenadas do Ponto A: ");
   scanf("%f %f %f %f", &pontoA[0], &pontoA[1], &pontoA[2], &pontoA[3]);
   printf("Coordenadas do Ponto B: ");
   scanf("%f %f %f %f", &pontoB[0], &pontoB[1], &pontoB[2], &pontoB[3]);
+
+  if(pontoA[0] != 1 || pontoA[1] != -1 || pontoB[0] != -1 || pontoB[1] != 3) {
+    printf("\nVerifique os valores inseridos. Caso estejam todos certos, infelizmente esse programa não será capaz de resolver a questão.");
+    sair();
+    return;
+  }
 
   normaA = calcularNorma(pontoA, 4);
   normaB = calcularNorma(pontoB, 4);
@@ -255,13 +267,10 @@ void resolverQuestao5() {
   calcularAB(pontoA, pontoP, pontoAP, 4);
   
   calcularProjecao(pontoAB, pontoAP, pontoAQ, 4);
+  
+  calcularAmaisB(pontoAQ, pontoA, pontoQ, 4);
 
-  for (int i = 0; i < 4; i++) {
-    pontoQ[i] = pontoAQ[i]+pontoA[i];
-  }
-
-  printf("\n\nA resposta é:\nQ(%f, %f, %f, %f)", pontoQ[0], pontoQ[1], pontoQ[2], pontoQ[3]);
-  printf("\n\nPara dízimas periódicas, insira 13 casas decimais na resposta, aproximando apenas a última\n(ex: 1.06667 deve virar 1.0666666666667)\nPara números que não possuem dízima periódica, insira apenas as casas decimais até os zeros\n(ex: 1.20000 deve virar 1.2)");
+  printf("\n\nA resposta é:\nQ(%.3f, %.3f, %.3f, %.3f)", pontoQ[0], pontoQ[1], pontoQ[2], pontoQ[3]);
 
   sair();
 }
@@ -305,8 +314,8 @@ void resolverQuestao6() {
   anguloRetasEmGraus = converterRadParaGraus(anguloRetasEmRad);
 
   // Printando respostas
-  printf("\n\nA resposta da letra A é: %.2f°\n", anguloRetasEmGraus);
-  printf("A resposta da letra B é: %.2f°", anguloPlanosEmGraus);
+  printf("\n\nA resposta da letra A é: %.2f\n", anguloRetasEmGraus);
+  printf("A resposta da letra B é: %.2f", anguloPlanosEmGraus);
 
   sair();
 }
